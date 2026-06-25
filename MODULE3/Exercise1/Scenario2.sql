@@ -1,24 +1,34 @@
 BEGIN
 
-    FOR cust IN (
-        SELECT CustomerID
-        FROM Customers
-        WHERE Balance > 10000
-    )
-    LOOP
+FOR cust IN(
 
-        UPDATE Customers
-        SET IsVIP='TRUE'
-        WHERE CustomerID=cust.CustomerID;
+SELECT CustomerID
 
-    END LOOP;
+FROM Customers
 
-    COMMIT;
+WHERE Balance>10000
 
-    DBMS_OUTPUT.PUT_LINE('VIP status updated.');
+)
+
+LOOP
+
+UPDATE Customers
+
+SET IsVIP='TRUE'
+
+WHERE CustomerID=cust.CustomerID;
+
+END LOOP;
+
+COMMIT;
+
+DBMS_OUTPUT.PUT_LINE('VIP Updated');
 
 END;
 /
 
-SELECT CustomerName,Balance,IsVIP
+SELECT CustomerID,
+Name,
+Balance,
+IsVIP
 FROM Customers;

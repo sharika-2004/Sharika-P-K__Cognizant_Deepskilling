@@ -1,0 +1,11 @@
+Analysis
+  Time Complexity
+     Best Case: O(1) (when years = 0)
+     Average Case: O(n)
+     Worst Case: O(n)
+  Space Complexity
+     O(n) due to the recursive call stack.
+Optimization
+  Use Memoization to avoid repeated calculations.
+  Use Dynamic Programming for improved efficiency.
+  Use an Iterative Approach to reduce space complexity from O(n) to O(1).

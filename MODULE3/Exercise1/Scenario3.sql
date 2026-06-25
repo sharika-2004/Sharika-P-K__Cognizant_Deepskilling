@@ -2,33 +2,43 @@ SET SERVEROUTPUT ON;
 
 BEGIN
 
-    FOR loan_rec IN (
+FOR loan_rec IN(
 
-        SELECT c.CustomerName,
-               l.LoanID,
-               l.DueDate
+SELECT c.Name,
+l.LoanID,
+l.EndDate
 
-        FROM Customers c
-        JOIN Loans l
+FROM Customers c
 
-        ON c.CustomerID=l.CustomerID
+JOIN Loans l
 
-        WHERE l.DueDate BETWEEN SYSDATE AND SYSDATE+30
+ON c.CustomerID=l.CustomerID
 
-    )
+WHERE l.EndDate
+BETWEEN SYSDATE
+AND SYSDATE+30
 
-    LOOP
+)
 
-        DBMS_OUTPUT.PUT_LINE(
-            'Reminder: Dear '
-            ||loan_rec.CustomerName||
-            ', Loan ID '
-            ||loan_rec.LoanID||
-            ' is due on '
-            ||TO_CHAR(loan_rec.DueDate,'DD-MON-YYYY')
-        );
+LOOP
 
-    END LOOP;
+DBMS_OUTPUT.PUT_LINE(
+
+'Reminder : Dear '
+
+||loan_rec.Name||
+
+', Loan '
+
+||loan_rec.LoanID||
+
+' is due on '
+
+||TO_CHAR(loan_rec.EndDate,'DD-MON-YYYY')
+
+);
+
+END LOOP;
 
 END;
 /

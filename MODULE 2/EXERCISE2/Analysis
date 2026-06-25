@@ -1,28 +1,21 @@
-# Analysis
+Time Complexity Comparison
+    Linear Search
+       Best Case: O(1)
+       Average Case: O(n)
+       Worst Case: O(n)
+    Binary Search
+       Best Case: O(1)
+       Average Case: O(log n)
+       Worst Case: O(log n)
+Comparison
+   Linear Search checks each product one by one.
+   Binary Search repeatedly divides the sorted array into halves.
+   Binary Search requires the array to be sorted.
+   Binary Search performs fewer comparisons than Linear Search for large datasets.
+Suitable Algorithm for the Platform
+   Binary Search is more suitable for an e-commerce platform.
+   It provides faster search performance for large product catalogs.
+   It improves user experience by reducing search time.
+   It is efficient when products are stored in sorted order.
+   Linear Search is suitable only for small or unsorted datasets.
 
-## Time Complexity Comparison
-
-### Linear Search
-- **Best Case:** O(1)
-- **Average Case:** O(n)
-- **Worst Case:** O(n)
-
-### Binary Search
-- **Best Case:** O(1)
-- **Average Case:** O(log n)
-- **Worst Case:** O(log n)
-
-## Comparison
-
-- Linear Search checks each product one by one until the target is found.
-- Binary Search repeatedly divides the sorted array into halves.
-- Binary Search requires the array to be sorted before searching.
-- Binary Search performs fewer comparisons than Linear Search for large datasets.
-
-## Suitable Algorithm for the Platform
-
-- Binary Search is more suitable for an e-commerce platform.
-- It provides faster search performance for large product catalogs.
-- It improves the user experience by reducing search time.
-- It is highly efficient when products are stored in sorted order.
-- Linear Search is suitable only for small or unsorted datasets.

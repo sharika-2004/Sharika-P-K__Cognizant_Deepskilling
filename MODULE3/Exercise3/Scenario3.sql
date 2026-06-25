@@ -1,71 +1,59 @@
 #Transfer fund
 
-CREATE TABLE Accounts (
-
-    AccountID NUMBER PRIMARY KEY,
-    CustomerName VARCHAR2(50),
-    Balance NUMBER
-
-);
-INSERT INTO Accounts VALUES (1001,'Rahul',50000);
-INSERT INTO Accounts VALUES (1002,'Priya',30000);
-
-COMMIT;
-
+SELECT * FROM Accounts;
 CREATE OR REPLACE PROCEDURE TransferFunds(
 
-    p_fromAccount IN NUMBER,
-    p_toAccount IN NUMBER,
-    p_amount IN NUMBER
+    p_FromAccount IN NUMBER,
+    p_ToAccount IN NUMBER,
+    p_Amount IN NUMBER
 
 )
 
 AS
 
-    v_balance NUMBER;
+    v_Balance NUMBER;
 
 BEGIN
 
     SELECT Balance
 
-    INTO v_balance
+    INTO v_Balance
 
     FROM Accounts
 
-    WHERE AccountID = p_fromAccount;
+    WHERE AccountID = p_FromAccount;
 
-    IF v_balance >= p_amount THEN
-
-        UPDATE Accounts
-
-        SET Balance = Balance - p_amount
-
-        WHERE AccountID = p_fromAccount;
+    IF v_Balance >= p_Amount THEN
 
         UPDATE Accounts
 
-        SET Balance = Balance + p_amount
+        SET Balance = Balance - p_Amount
 
-        WHERE AccountID = p_toAccount;
+        WHERE AccountID = p_FromAccount;
+
+        UPDATE Accounts
+
+        SET Balance = Balance + p_Amount
+
+        WHERE AccountID = p_ToAccount;
 
         COMMIT;
 
-        DBMS_OUTPUT.PUT_LINE('Transfer Successful');
+        DBMS_OUTPUT.PUT_LINE('Fund Transfer Successful.');
 
     ELSE
 
-        DBMS_OUTPUT.PUT_LINE('Insufficient Balance');
+        DBMS_OUTPUT.PUT_LINE('Insufficient Balance.');
 
     END IF;
 
 END;
 /
-
 SET SERVEROUTPUT ON;
 
 BEGIN
 
-    TransferFunds(1001,1002,5000);
+    TransferFunds(1,2,500);
 
 END;
 /

@@ -1,32 +1,40 @@
 #Process Monthly Interest
 
-CREATE TABLE SavingsAccounts (
-    AccountID NUMBER PRIMARY KEY,
-    CustomerName VARCHAR2(50),
-    Balance NUMBER
-);
+SELECT * FROM Accounts;
+CREATE OR REPLACE PROCEDURE ProcessMonthlyInterest
+AS
+BEGIN
 
-INSERT INTO SavingsAccounts VALUES (101,'Rahul',10000);
-INSERT INTO SavingsAccounts VALUES (102,'Priya',15000);
-INSERT INTO SavingsAccounts VALUES (103,'Amit',25000);
-INSERT INTO SavingsAccounts VALUES (104,'Sneha',12000);
+    UPDATE Accounts
+    SET Balance = Balance + (Balance * 0.01)
+    WHERE AccountType = 'Savings';
 
-COMMIT;
+    COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('Monthly interest processed successfully.');
+
+END;
+/
 
 CREATE OR REPLACE PROCEDURE ProcessMonthlyInterest
 AS
 BEGIN
 
-    UPDATE SavingsAccounts
-    SET Balance = Balance + (Balance * 0.01);
+    UPDATE Accounts
+    SET Balance = Balance + (Balance * 0.01)
+    WHERE AccountType = 'Savings';
 
     COMMIT;
 
+    DBMS_OUTPUT.PUT_LINE('Monthly interest processed successfully.');
+
 END;
 /
+
+SET SERVEROUTPUT ON;
 
 BEGIN
     ProcessMonthlyInterest;
 END;
 /
-SELECT * FROM SavingsAccounts;
+SELECT * FROM Accounts;

@@ -41,29 +41,7 @@ It converts Java objects into database tables automatically.
 - Lazy Loading
 - Transaction Management
 
-## Hibernate Example
 
-```java
-public Integer addEmployee(Employee employee) {
-    Session session = factory.openSession();
-    Transaction tx = null;
-    Integer employeeID = null;
-
-    try {
-        tx = session.beginTransaction();
-        employeeID = (Integer) session.save(employee);
-        tx.commit();
-    } catch (HibernateException e) {
-        if (tx != null)
-            tx.rollback();
-        e.printStackTrace();
-    } finally {
-        session.close();
-    }
-
-    return employeeID;
-}
-```
 
 ---
 
@@ -84,25 +62,6 @@ It reduces boilerplate code and automatically provides CRUD operations.
 - Sorting
 - Transaction management
 
-## Repository
-
-```java
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-
-}
-```
-
-## Service
-
-```java
-@Autowired
-private EmployeeRepository employeeRepository;
-
-@Transactional
-public void addEmployee(Employee employee) {
-    employeeRepository.save(employee);
-}
-```
 
 ---
 

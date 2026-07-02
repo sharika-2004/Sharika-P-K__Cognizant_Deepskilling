@@ -128,7 +128,3 @@ JPA defines the persistence standard, Hibernate implements the standard, and Spr
 
 ---
 
-# References
-
-- https://dzone.com/articles/what-is-the-difference-between-hibernate-and-sprin-1
-- https://www.javaworld.com/article/3379043/what-is-jpa-introduction-to-the-java-persistence-api.html
